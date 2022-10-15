@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routers
 
-app.get(
+app.use(
   '/stylesheets',
   express.static(path.join(__dirname, '../client/stylesheets'))
 );
