@@ -24,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routers
 
+app.use('/assets', express.static(path.join(__dirname, '../client/assets')));
 app.use(
   '/stylesheets',
   express.static(path.join(__dirname, '../client/stylesheets'))
