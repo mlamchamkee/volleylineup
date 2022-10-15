@@ -94,7 +94,7 @@ const ResponsiveAppBar = () => {
             </Menu> */}
           {/* </Box> */}
           {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
-          <img alt="logo" src="../assets/logo.png" style={{ height: 40 }} />
+          <img alt="logo" src="../assets/logo2.png" style={{ height: 40 }} />
           {/* <Typography
             variant="h5"
             noWrap
