@@ -1,5 +1,5 @@
 {
-  "name": "volleysquad",
+  "name": "volleylineup",
   "version": "0.1.0",
   "description": "Leading your volleyball team to victory!",
   "main": "server/server.ts",
@@ -36,7 +36,6 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/icons-material": "^5.10.6",
-    "@mui/material": "^5.10.6",
     "@mui/styled-engine-sc": "^5.10.6",
     "@reduxjs/toolkit": "^1.8.5",
     "@testing-library/jest-dom": "^5.16.5",
@@ -53,7 +52,7 @@
     "@types/react-router-dom": "^5.3.3",
     "@types/redux-mock-store": "^1.0.3",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
-    "@typescript-eslint/parser": "^5.38.1",
+    "@typescript-eslint/parser": "^5.40.0",
     "axios": "^0.27.2",
     "babel-jest": "^29.0.3",
     "babel-loader": "^8.2.5",
@@ -61,7 +60,7 @@
     "css-loader": "^6.7.1",
     "eslint": "^8.25.0",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-standard-with-typescript": "^23.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-n": "^15.3.0",
@@ -75,7 +74,6 @@
     "nodemon": "^2.0.20",
     "pg": "^8.8.0",
     "puppeteer": "^14.2.1",
-    "react-redux": "^8.0.4",
     "react-test-renderer": "^18.2.0",
     "redux-mock-store": "^1.5.4",
     "sass": "^1.54.9",
@@ -91,6 +89,9 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@mui/material": "^5.10.6",
+    "@mui/x-data-grid": "^5.17.7",
+    "@mui/x-data-grid-pro": "^5.17.7",
     "cookie-parser": "^1.4.6",
     "cookie-session": "^2.0.0",
     "dotenv": "^16.0.3",
@@ -102,6 +103,7 @@
     "pg": "^8.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^8.0.4",
     "react-router-dom": "^6.4.1",
     "ts-node": "^10.9.1"
   }
