@@ -7,6 +7,7 @@ import { Player } from './dataStructure';
 const initialState: AppStateType = {
   playerCount: DEFAULT_PLAYER_COUNT,
   lineup: DEFAULT_LINEUP,
+  currentLineup: DEFAULT_LINEUP,
 };
 
 const appSlice = createSlice({
@@ -24,7 +25,17 @@ const appSlice = createSlice({
       action: PayloadAction<RowType>,
     ) => {
       const newRow = action.payload;
-      state.lineup[action.payload.id] = new Player(Number(newRow.num), newRow.name, newRow.position);
+      const newPlayer = new Player(Number(newRow.num), newRow.name, newRow.position);
+      state.lineup[action.payload.id] = newPlayer;
+
+      const arrNum = state.currentLineup.map((el) => el.num);
+      const idxUpdate = arrNum.indexOf(action.payload.num);
+      state.currentLineup[idxUpdate] = newPlayer;
+    },
+    rotate: (
+      state: AppStateType,
+    ) => {
+      state.currentLineup.push(state.currentLineup.shift());
     },
   },
 });
@@ -32,6 +43,7 @@ const appSlice = createSlice({
 export const {
   setPlayerCount,
   updateLineup,
+  rotate,
 } = appSlice.actions;
 
 export default appSlice.reducer;

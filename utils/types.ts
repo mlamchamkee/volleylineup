@@ -22,4 +22,5 @@ export type RowType = {
 export type AppStateType = {
   playerCount: number,
   lineup: LineupType,
+  currentLineup: LineupType,
 };

@@ -14,7 +14,7 @@ const columns: GridColDef[] = [
     field: 'num',
     headerName: '#',
     width: 10,
-    editable: true,
+    editable: false,
     headerAlign: 'center',
     align: 'center',
     headerClassName: 'col-header',

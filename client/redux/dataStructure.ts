@@ -1,14 +1,14 @@
 import { PositionType } from '../../utils/types';
 
 export class Player {
-  id: number;
+  num: number;
 
   name: string;
 
   position: PositionType;
 
-  constructor(id: number, name: string, position: PositionType) {
-    this.id = id;
+  constructor(num: number, name: string, position: PositionType) {
+    this.num = num;
     this.name = name;
     this.position = position;
   }
