@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { store } from './redux/store';
 import AppNavbar from './components/AppNavbar';
+import StyledFab from './components/StyledFab';
 import Court from './containers/Court';
 import Roster from './containers/Roster';
 import { MAIN_THEME } from '../utils/constants';
@@ -34,6 +35,7 @@ root.render(
       <AppNavbar />
       <Roster />
       <Court />
+      <StyledFab />
     </Provider>
   </ThemeProvider>,
 );
