@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
-import { experimentalStyled as styled } from '@mui/material/styles';
 import Grid2 from '@mui/material/Unstable_Grid2';
 
 import Player from '../components/Player';
