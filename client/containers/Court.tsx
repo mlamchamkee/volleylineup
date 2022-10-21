@@ -48,7 +48,10 @@ function Court() {
   });
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+    <Box sx={{
+      display: 'flex', flexDirection: 'row', justifyContent: 'center', mt: 5,
+    }}
+    >
       <Box sx={{
         display: 'flex', flexDirection: 'row', justifyContent: 'center', maxWidth: 0.98,
       }}

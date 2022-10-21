@@ -73,10 +73,10 @@ function Roster() {
     <Box sx={{
       minHeight: 328,
       maxHeight: 450,
-      height: 418,
+      height: 378,
       maxWidth: 352,
       m: 'auto',
-      my: 5,
+      mt: 1,
       alignItems: 'center',
       justifyContent: 'center',
       '& .col-header': {
@@ -87,7 +87,7 @@ function Roster() {
     >
       <DataGrid
         sx={{ maxWidth: 360 }}
-        rowHeight={45}
+        rowHeight={40}
         rows={rows}
         columns={columns}
         processRowUpdate={processRowUpdate}
