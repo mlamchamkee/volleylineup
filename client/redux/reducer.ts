@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { DEFAULT_PLAYER_COUNT, DEFAULT_LINEUP } from '../../constants';
-import { AppStateType, LineupType } from '../../types';
+import { DEFAULT_PLAYER_COUNT, DEFAULT_LINEUP } from '../../utils/constants';
+import { AppStateType, RowType } from '../../utils/types';
+import { Player } from './dataStructure';
 
 const initialState: AppStateType = {
   playerCount: DEFAULT_PLAYER_COUNT,
@@ -18,18 +19,19 @@ const appSlice = createSlice({
     ) => {
       state.playerCount = action.payload;
     },
-    setLineup: (
+    updateLineup: (
       state: AppStateType,
-      action: PayloadAction<LineupType>,
+      action: PayloadAction<RowType>,
     ) => {
-      state.lineup = action.payload;
+      const newRow = action.payload;
+      state.lineup[action.payload.id] = new Player(Number(newRow.num), newRow.name, newRow.position);
     },
   },
 });
 
 export const {
   setPlayerCount,
-  setLineup,
+  updateLineup,
 } = appSlice.actions;
 
 export default appSlice.reducer;

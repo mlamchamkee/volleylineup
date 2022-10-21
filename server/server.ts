@@ -4,7 +4,7 @@ import cookieSession from 'cookie-session';
 import express, { NextFunction, Request, Response } from 'express';
 import passport from 'passport';
 import path from 'path';
-import { GlobalError } from '../types'
+import { GlobalError } from '../utils/types';
 
 const app = express();
 const PORT = 3000;
@@ -27,27 +27,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/assets', express.static(path.join(__dirname, '../client/assets')));
 app.use(
   '/stylesheets',
-  express.static(path.join(__dirname, '../client/stylesheets'))
+  express.static(path.join(__dirname, '../client/stylesheets')),
 );
 
 // Serve bundle.js file
-app.get('/bundle.js', (req: Request, res: Response) => {
-  return res.status(200).sendFile(path.join(__dirname, '../dist/bundle.js'));
-});
+app.get('/bundle.js', (req: Request, res: Response) => res.status(200).sendFile(path.join(__dirname, '../dist/bundle.js')));
 
 // Serve base HTML file
-app.get('*', (req: Request, res: Response) => {
-  return res.status(200).sendFile(path.join(__dirname, '../dist/index.html'));
-});
+app.get('*', (req: Request, res: Response) => res.status(200).sendFile(path.join(__dirname, '../dist/index.html')));
 
 // Global error handling middleware
 app.use((err: GlobalError, req: Request, res: Response, next: NextFunction) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',
     status: 400,
-    message: { err: 'An error occurred' }
+    message: { err: 'An error occurred' },
   };
-  const errorObj = Object.assign({}, defaultErr, err);
+  const errorObj = { ...defaultErr, ...err };
   console.log(err);
   return res.status(errorObj.status).json(errorObj.message);
 });

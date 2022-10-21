@@ -12,6 +12,13 @@ export type PositionFullType = 'Setter' | 'Middle Blocker' | 'Outside Hitter' | 
 
 export type LineupType = Array<Player>;
 
+export type RowType = {
+  id: number,
+  num: number,
+  name: string,
+  position: PositionType,
+};
+
 export type AppStateType = {
   playerCount: number,
   lineup: LineupType,

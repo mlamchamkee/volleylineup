@@ -5,8 +5,9 @@ import {
   DataGrid, GridColDef, GridRowModel, GridRowsProp,
 } from '@mui/x-data-grid/';
 
-import { MAIN_THEME } from '../../constants';
+import { MAIN_THEME } from '../../utils/constants';
 import { useAppDispatch, useAppSelector } from '../redux/store';
+import { updateLineup } from '../redux/reducer';
 
 const columns: GridColDef[] = [
   {
@@ -40,11 +41,12 @@ const columns: GridColDef[] = [
 
 function Roster() {
   const { lineup } = useAppSelector((state) => state.app);
+  const dispatch = useAppDispatch();
 
   const dataRows = [];
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < 6; i++) {
     dataRows.push({
-      id: i, num: i, name: lineup[i].name, position: lineup[i].position,
+      id: i, num: i + 1, name: lineup[i].name, position: lineup[i].position,
     });
   }
   const rows: GridRowsProp = [
@@ -53,21 +55,24 @@ function Roster() {
 
   const processRowUpdate = React.useCallback(
     (newRow: GridRowModel) => {
-      console.log('NEW ROW', newRow);
+      dispatch(updateLineup(newRow));
       return newRow;
     },
     [],
   );
 
-  const handleProcessRowUpdateError = React.useCallback((error: Error) => {
-    console.log('error', error);
-  }, []);
+  const handleProcessRowUpdateError = React.useCallback(
+    (error: Error) => {
+      console.log('error', error);
+    },
+    [],
+  );
 
   return (
   // <div style={{ height: 600, maxWidth: 500, margin: 'auto' }}>
     <Box sx={{
-      height: 600,
-      maxWidth: 360,
+      height: 328,
+      maxWidth: 352,
       m: 'auto',
       my: 5,
       alignItems: 'center',
@@ -80,6 +85,7 @@ function Roster() {
     >
       <DataGrid
         sx={{ maxWidth: 360 }}
+        rowHeight={45}
         rows={rows}
         columns={columns}
         processRowUpdate={processRowUpdate}
@@ -91,7 +97,6 @@ function Roster() {
         hideFooterPagination
       />
     </Box>
-
   // </div>
   );
 }

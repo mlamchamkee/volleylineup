@@ -7,7 +7,7 @@ import { store } from './redux/store';
 import AppNavbar from './components/AppNavbar';
 import Court from './containers/Court';
 import Roster from './containers/Roster';
-import { MAIN_THEME } from '../constants';
+import { MAIN_THEME } from '../utils/constants';
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 

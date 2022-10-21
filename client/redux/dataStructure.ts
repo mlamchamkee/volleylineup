@@ -1,4 +1,4 @@
-import { PositionType } from '../../types';
+import { PositionType } from '../../utils/types';
 
 export class Player {
   id: number;
