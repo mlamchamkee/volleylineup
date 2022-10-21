@@ -14,23 +14,20 @@ function Court() {
     6: [99, 3, 2, 1, 99, 99, 4, 5, 0, 99],
     7: [99, 3, 2, 1, 99, 4, 5, 6, 0, 99],
     8: [99, 3, 2, 1, 99, 4, 5, 6, 7, 0],
+    9: [4, 3, 2, 1, 99, 5, 6, 7, 8, 0],
+    10: [5, 4, 3, 2, 1, 6, 7, 8, 9, 0],
   };
-  // const gridItems = order[6].map((num) => (
-  //   <Grid2 item xs={4}>
-  //     <Player name={currentLineup[num].name} position={currentLineup[num].position} />
-  //   </Grid2>
-  // ));
-
   const gridSize = {
     6: 2.4,
     7: 2.4,
     8: 2.4,
   };
-
   const offNums = {
     6: [],
     7: [4],
     8: [0, 4],
+    9: [0, 4, 5],
+    10: [0, 1, 5, 6],
   };
 
   const gridItems = order[playerCount].map((num) => {

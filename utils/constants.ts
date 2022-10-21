@@ -23,6 +23,8 @@ export const DEFAULT_LINEUP = [
   new Player(6, 'Max Holt', 'MB'),
   new Player(7, '7', 'OH'),
   new Player(8, '8', 'MB'),
+  new Player(9, '9', 'OPP'),
+  new Player(10, '10', 'MB'),
 
 ];
 
