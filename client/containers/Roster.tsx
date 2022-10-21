@@ -68,12 +68,12 @@ function Roster() {
     [],
   );
 
+  const height = 378 + (playerCount - 8) * 40;
+
   return (
   // <div style={{ height: 600, maxWidth: 500, margin: 'auto' }}>
     <Box sx={{
-      minHeight: 328,
-      maxHeight: 450,
-      height: 378,
+      height,
       maxWidth: 352,
       m: 'auto',
       mt: 1,

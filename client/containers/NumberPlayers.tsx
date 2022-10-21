@@ -61,10 +61,8 @@ export default function NumberPlayers() {
   const handleBlur = () => {
     if (playerCount < 6) {
       dispatch(setPlayerCount(6));
-      // setValue(6);
     } else if (playerCount > 10) {
       dispatch(setPlayerCount(10));
-      // setValue(10);
     }
   };
 
@@ -115,12 +113,12 @@ export default function NumberPlayers() {
               valueLabelDisplay="auto"
               // aria-labelledby="input-slider"
               step={1}
-              marks
+              marks={marks}
               min={6}
               max={10}
             />
           </Grid>
-          <Grid item>
+          {/* <Grid item>
             <Input
               value={playerCount}
               size="small"
@@ -134,7 +132,7 @@ export default function NumberPlayers() {
                 'aria-labelledby': 'input-slider',
               }}
             />
-          </Grid>
+          </Grid> */}
         </Grid>
       </Box>
     </Box>
