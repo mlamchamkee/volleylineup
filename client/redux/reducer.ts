@@ -14,13 +14,13 @@ const appSlice = createSlice({
   reducers: {
     setPlayerCount: (
       state: appStateType,
-      action: PayloadAction<number>
+      action: PayloadAction<number>,
     ) => {
       state.playerCount = action.payload;
     },
     setLineup: (
       state: appStateType,
-      action: PayloadAction<LineupType>
+      action: PayloadAction<LineupType>,
     ) => {
       state.lineup = action.payload;
     },

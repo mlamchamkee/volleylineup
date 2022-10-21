@@ -1,17 +1,14 @@
 import * as React from 'react';
 
 import Box from '@mui/material/Box';
-import { DataGrid, GridColDef, GridRowsProp } from '@mui/x-data-grid/';
+import {
+  DataGrid, GridColDef, GridRowsProp, GridRowModel,
+} from '@mui/x-data-grid/';
 
-import { Player } from '../redux/dataStructure';
-import {MAIN_THEME} from '../../constants'
+import { useAppSelector, useAppDispatch } from '../redux/store';
+// import { Player } from '../redux/dataStructure';
+import { MAIN_THEME } from '../../constants';
 
-const team = [new Player(1, 'Andre', 'S'), new Player(2, 'Michael', 'MB')]
-const dataRows = [];
-for (let i = 0; i < 2; i++) {
-  dataRows.push({ id: i, col0: i, col1: team[i].name, col2: team[i].position })
-}
-console.log(dataRows)
 // const rows: GridRowsProp = [
 //   { id: 1, col0: 1, col1: 'Andre', col2: 'S' },
 //   { id: 2, col0: 2, col1: 'Michael', col2: 'MB' },
@@ -23,49 +20,77 @@ console.log(dataRows)
 //   { id: 8, col0: 8, col1: 'Player 8', col2: 'MB' },
 // ];
 
-const rows: GridRowsProp = [
-  ...dataRows
-];
-
 const columns: GridColDef[] = [
-  { field: 'col0', headerName: '#', width: 10, editable: true, headerAlign: 'center', align: 'center',headerClassName: 'col-header', },
-  { field: 'col1', headerName: 'Name', width: 150, editable: true, headerAlign: 'center', align: 'center',headerClassName: 'col-header', },
-  { field: 'col2', headerName: 'Position', width: 150, editable: true, headerAlign: 'center', align: 'center', headerClassName: 'col-header', },
+  {
+    field: 'col0', headerName: '#', width: 10, editable: true, headerAlign: 'center', align: 'center', headerClassName: 'col-header',
+  },
+  {
+    field: 'col1', headerName: 'Name', width: 150, editable: true, headerAlign: 'center', align: 'center', headerClassName: 'col-header',
+  },
+  {
+    field: 'col2', headerName: 'Position', width: 150, editable: true, headerAlign: 'center', align: 'center', headerClassName: 'col-header',
+  },
 ];
 
-const Roster = () => {
+function Roster() {
+  // const processRowUpdate = React.useCallback(
+  // async (newRow: GridRowModel) => {
+  // Make the HTTP request to save in the backend
+  // const response = await mutateRow(newRow);
+  // setSnackbar({ children: 'User successfully saved', severity: 'success' });
+  // return response;
+  // console.log(newRow);
+  // },
+  // [mutateRow],
+  // );
+// const team = [new Player(1, 'Andre', 'S'), new Player(2, 'Michael', 'MB')];
+  const { lineup } = useAppSelector((state) => state.app);
+
+  const dataRows = [];
+  for (let i = 0; i < 2; i++) {
+    dataRows.push({
+      id: i, col0: i, col1: lineup[i].name, col2: lineup[i].position,
+    });
+  }
+  const rows: GridRowsProp = [
+    ...dataRows,
+  ];
+
+  const processRowUpdate = (event: any) => {
+    console.log(event);
+  };
+
   return (
-    // <div style={{ height: 600, maxWidth: 500, margin: 'auto' }}>
-      <Box sx={{ 
-        height: 600,
-        maxWidth: 360,
-        m: 'auto',
-        my: 5,
-        alignItems: 'center', 
-        justifyContent: 'center',
-        '& .col-header': {
-          color: MAIN_THEME.fontColorSecondary,
-          backgroundColor: MAIN_THEME.color,
-        }, 
-      }}>
-        <DataGrid
-          sx={{ maxWidth: 360}}
-          rows={rows}
-          columns={columns}
-          experimentalFeatures={{ newEditingApi: true }}
-          hideFooter={true}
+  // <div style={{ height: 600, maxWidth: 500, margin: 'auto' }}>
+    <Box sx={{
+      height: 600,
+      maxWidth: 360,
+      m: 'auto',
+      my: 5,
+      alignItems: 'center',
+      justifyContent: 'center',
+      '& .col-header': {
+        color: MAIN_THEME.fontColorSecondary,
+        backgroundColor: MAIN_THEME.color,
+      },
+    }}
+    >
+      <DataGrid
+        sx={{ maxWidth: 360 }}
+        rows={rows}
+        columns={columns}
+        experimentalFeatures={{ newEditingApi: true }}
+        hideFooter
           // hideFooterRowCount={true}
-          // processRowUpdate={processRowUpdate}
-          hideFooterSelectedRowCount={true}
-          hideFooterPagination={true}
+        // processRowUpdate={processRowUpdate}
+        hideFooterSelectedRowCount
+        hideFooterPagination
+      />
+    </Box>
 
-        />
-      </Box>
-
-    // </div>
+  // </div>
   );
 }
-
 
 // const columns: GridColumns = [
 //   { field: 'name', headerName: 'Name', width: 180, editable: true },
@@ -86,5 +111,4 @@ const Roster = () => {
 //   },
 // ];
 
-
-export default Roster
+export default Roster;
