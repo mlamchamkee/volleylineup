@@ -95,7 +95,7 @@ export default function NumberPlayers() {
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', mt: 1 }}>
-      <Box sx={{ width: 250 }}>
+      <Box sx={{ width: 300 }}>
         <Typography id="input-slider" gutterBottom>
           Number of Players
         </Typography>
@@ -118,6 +118,8 @@ export default function NumberPlayers() {
               max={10}
             />
           </Grid>
+
+          <Grid item sx={{ width: 40 }} />
           {/* <Grid item>
             <Input
               value={playerCount}
