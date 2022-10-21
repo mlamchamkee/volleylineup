@@ -15,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 // const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Logout'];
 
-const ResponsiveAppBar = () => {
+function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -36,7 +36,7 @@ const ResponsiveAppBar = () => {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl" >
+      <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Box sx={{ width: 40, height: 40 }} />
@@ -58,7 +58,7 @@ const ResponsiveAppBar = () => {
             TEST
           </Typography> */}
           {/* <Box sx={{ display: { xs: 'flex', md: 'none' } }}>   */}
-            {/* <IconButton
+          {/* <IconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
@@ -68,7 +68,7 @@ const ResponsiveAppBar = () => {
             >
               <MenuIcon />
             </IconButton> */}
-            {/* <Menu
+          {/* <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
@@ -157,5 +157,5 @@ const ResponsiveAppBar = () => {
       </Container>
     </AppBar>
   );
-};
+}
 export default ResponsiveAppBar;
