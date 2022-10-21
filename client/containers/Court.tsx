@@ -9,9 +9,10 @@ import { useAppDispatch, useAppSelector } from '../redux/store';
 import { MAIN_THEME } from '../../utils/constants';
 
 function Court() {
-  const { currentLineup } = useAppSelector((state) => state.app);
+  const { playerCount, currentLineup } = useAppSelector((state) => state.app);
   const order = {
-    6: [3, 2, 1, 4, 5, 0],
+    6: [99, 3, 2, 1, 99, 99, 4, 5, 0, 99],
+    7: [99, 3, 2, 1, 99, 4, 5, 6, 0, 99],
     8: [99, 3, 2, 1, 99, 4, 5, 6, 7, 0],
   };
   // const gridItems = order[6].map((num) => (
@@ -21,30 +22,30 @@ function Court() {
   // ));
 
   const gridSize = {
-    6: 4,
+    6: 2.4,
+    7: 2.4,
     8: 2.4,
   };
 
   const offNums = {
     6: [],
+    7: [4],
     8: [0, 4],
   };
 
-  const numPlayers = 8;
-
-  const gridItems = order[numPlayers].map((num) => {
+  const gridItems = order[playerCount].map((num) => {
     const player = currentLineup[num];
     if (player) {
       let backgroundColor = MAIN_THEME.fontColor;
-      if (offNums[numPlayers].includes(num)) backgroundColor = MAIN_THEME.backgroundGrey;
+      if (offNums[playerCount].includes(num)) backgroundColor = MAIN_THEME.backgroundGrey;
 
       return (
-        <Grid2 item xs={gridSize[numPlayers]}>
+        <Grid2 item xs={2.4}>
           <Player name={player.name} position={player.position} backgroundColor={backgroundColor} />
         </Grid2>
       );
     }
-    return <Grid2 item xs={12 / 5} />;
+    return <Grid2 item xs={2.4} />;
   });
 
   return (

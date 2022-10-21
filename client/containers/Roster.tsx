@@ -40,11 +40,11 @@ const columns: GridColDef[] = [
 ];
 
 function Roster() {
-  const { lineup } = useAppSelector((state) => state.app);
+  const { playerCount, lineup } = useAppSelector((state) => state.app);
   const dispatch = useAppDispatch();
 
   const dataRows = [];
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < playerCount; i++) {
     dataRows.push({
       id: i, num: i + 1, name: lineup[i].name, position: lineup[i].position,
     });
