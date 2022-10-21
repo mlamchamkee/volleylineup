@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { DEFAULT_PLAYER_COUNT, DEFAULT_LINEUP } from '../../constants';
-import { appStateType, LineupType } from '../../types';
+import { AppStateType, LineupType } from '../../types';
 
-const initialState: appStateType = {
+const initialState: AppStateType = {
   playerCount: DEFAULT_PLAYER_COUNT,
   lineup: DEFAULT_LINEUP,
 };
@@ -13,13 +13,13 @@ const appSlice = createSlice({
   initialState,
   reducers: {
     setPlayerCount: (
-      state: appStateType,
+      state: AppStateType,
       action: PayloadAction<number>,
     ) => {
       state.playerCount = action.payload;
     },
     setLineup: (
-      state: appStateType,
+      state: AppStateType,
       action: PayloadAction<LineupType>,
     ) => {
       state.lineup = action.payload;
