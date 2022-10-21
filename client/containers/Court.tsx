@@ -7,33 +7,54 @@ import Grid2 from '@mui/material/Unstable_Grid2';
 
 import Player from '../components/Player';
 import { useAppDispatch, useAppSelector } from '../redux/store';
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(2),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
+import { MAIN_THEME } from '../../utils/constants';
 
 function Court() {
   const { currentLineup } = useAppSelector((state) => state.app);
   const order = {
     6: [3, 2, 1, 4, 5, 0],
+    8: [99, 3, 2, 1, 99, 4, 5, 6, 7, 0],
   };
-  const gridItems = order[6].map((num) => (
-    <Grid2 item xs={4}>
-      <Player name={currentLineup[num].name} position={currentLineup[num].position} />
-    </Grid2>
-  ));
+  // const gridItems = order[6].map((num) => (
+  //   <Grid2 item xs={4}>
+  //     <Player name={currentLineup[num].name} position={currentLineup[num].position} />
+  //   </Grid2>
+  // ));
+
+  const gridSize = {
+    6: 4,
+    8: 2.4,
+  };
+
+  const offNums = {
+    6: [],
+    8: [0, 4],
+  };
+
+  const numPlayers = 8;
+
+  const gridItems = order[numPlayers].map((num) => {
+    const player = currentLineup[num];
+    if (player) {
+      let backgroundColor = MAIN_THEME.fontColor;
+      if (offNums[numPlayers].includes(num)) backgroundColor = MAIN_THEME.backgroundGrey;
+
+      return (
+        <Grid2 item xs={gridSize[numPlayers]}>
+          <Player name={player.name} position={player.position} backgroundColor={backgroundColor} />
+        </Grid2>
+      );
+    }
+    return <Grid2 item xs={12 / 5} />;
+  });
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
       <Box sx={{
-        display: 'flex', flexDirection: 'row', justifyContent: 'center', maxWidth: 352,
+        display: 'flex', flexDirection: 'row', justifyContent: 'center', maxWidth: 0.98,
       }}
       >
-        <Grid2 container spacing={2}>
+        <Grid2 container spacing={1}>
           {gridItems}
         </Grid2>
       </Box>

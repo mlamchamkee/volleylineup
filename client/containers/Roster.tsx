@@ -44,7 +44,7 @@ function Roster() {
   const dispatch = useAppDispatch();
 
   const dataRows = [];
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 8; i++) {
     dataRows.push({
       id: i, num: i + 1, name: lineup[i].name, position: lineup[i].position,
     });
@@ -71,7 +71,9 @@ function Roster() {
   return (
   // <div style={{ height: 600, maxWidth: 500, margin: 'auto' }}>
     <Box sx={{
-      height: 328,
+      minHeight: 328,
+      maxHeight: 450,
+      height: 418,
       maxWidth: 352,
       m: 'auto',
       my: 5,

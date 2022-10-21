@@ -9,15 +9,15 @@ import Chip from '@mui/material/Chip';
 
 function Player(props) {
   return (
-    <Card sx={{ maxWidth: 345, maxHeight: 75 }}>
+    <Card sx={{ maxWidth: 345, maxHeight: 65, backgroundColor: props.backgroundColor }}>
       <CardContent sx={{
         p: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
       }}
       >
-        <Typography gutterBottom variant="h6" component="div">
+        <Typography gutterBottom variant="body1" component="div">
           {props.name.split(' ')[0]}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="caption" color="text.secondary">
           {props.position}
         </Typography>
       </CardContent>

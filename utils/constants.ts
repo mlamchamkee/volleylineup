@@ -4,6 +4,7 @@ export const MAIN_THEME = {
   color: '#1B1A17',
   fontColor: '#FFFFFF',
   fontColorSecondary: '#F0A500',
+  backgroundGrey: '#B8C2CC',
 };
 
 export const DEFAULT_LINEUP = [
@@ -13,6 +14,8 @@ export const DEFAULT_LINEUP = [
   new Player(4, 'Matt Anderson', 'OPP'),
   new Player(5, 'Cody Kessel', 'OH'),
   new Player(6, 'Max Holt', 'MB'),
+  new Player(7, '7', 'MB'),
+  new Player(8, '8', 'MB'),
 
 ];
 
