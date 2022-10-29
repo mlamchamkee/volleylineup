@@ -1,10 +1,12 @@
 import 'dotenv/config';
 
-// import cookieSession from 'cookie-session';
+import cookieSession from 'cookie-session';
 import express, { NextFunction, Request, Response } from 'express';
-// import passport from 'passport';
+import passport from 'passport';
 import path from 'path';
 import { GlobalError } from '../utils/types';
+import authRouter from './routes/authApi';
+import lineupRouter from './routes/lineupApi';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,14 +15,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Passport and cookie-session methods for OAuth 2
-// app.use(
-//   cookieSession({
-//     name: 'github-auth-session',
-//     keys: [process.env.key1 || '', process.env.key2 || '']
-//   })
-// );
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(
+  cookieSession({
+    name: 'github-auth-session',
+    keys: [process.env.key1 || '', process.env.key2 || ''],
+  }),
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routers
 
@@ -33,8 +35,15 @@ app.use(
 // Serve bundle.js file
 app.get('/bundle.js', (req: Request, res: Response) => res.status(200).sendFile(path.join(__dirname, '../dist/bundle.js')));
 
+// Routes
+app.use('/auth', authRouter);
+app.use('/lineup', lineupRouter);
+
 // Serve base HTML file
 app.get('*', (req: Request, res: Response) => res.status(200).sendFile(path.join(__dirname, '../dist/index.html')));
+
+// Unknown routes
+app.use('/', (req: Request, res: Response) => res.status(404).send('404 Error'));
 
 // Global error handling middleware
 app.use((err: GlobalError, req: Request, res: Response, next: NextFunction) => {

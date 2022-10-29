@@ -24,3 +24,10 @@ export type AppStateType = {
   lineup: LineupType,
   currentLineup: LineupType,
 };
+
+export type GoogleSettingsType = {
+  clientID: string ;
+  clientSecret: string ;
+  callbackURL: string;
+  passReqToCallback: boolean;
+};
