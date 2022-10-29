@@ -19,7 +19,7 @@ const appSlice = createSlice({
       action: PayloadAction<number>,
     ) => {
       state.playerCount = action.payload;
-      state.currentLineup = state.lineup;
+      state.currentLineup = state.lineup.filter((el) => el.num < state.playerCount + 1);
     },
     updateLineup: (
       state: AppStateType,
