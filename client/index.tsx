@@ -11,6 +11,7 @@ import Court from './containers/Court';
 import Roster from './containers/Roster';
 import { MAIN_THEME } from '../utils/constants';
 import Login from './containers/Login';
+import IconButton from './containers/IconButton';
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 
@@ -41,6 +42,7 @@ root.render(
       <AppNavbar />
       <NumberPlayers />
       <Roster />
+      <IconButton />
       <Court />
       <StyledFab />
       <Login />

@@ -47,7 +47,7 @@ function Court() {
 
   return (
     <Box sx={{
-      display: 'flex', flexDirection: 'row', justifyContent: 'center', mt: 5,
+      display: 'flex', flexDirection: 'row', justifyContent: 'center', mt: 3,
     }}
     >
       <Box sx={{
