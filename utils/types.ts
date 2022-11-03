@@ -1,4 +1,4 @@
-import { Player } from '../client/redux/dataStructure';
+import Player from '../client/redux/dataStructure';
 
 export type GlobalError = {
   log: string;
@@ -24,11 +24,7 @@ export type AppStateType = {
   lineup: LineupType,
   currentLineup: LineupType,
   showLogin: boolean,
-};
-
-export type GoogleSettingsType = {
-  clientID: string ;
-  clientSecret: string ;
-  callbackURL: string;
-  passReqToCallback: boolean;
+  isLoggedIn: boolean | undefined,
+  email: string | undefined,
+  picture: string | undefined,
 };

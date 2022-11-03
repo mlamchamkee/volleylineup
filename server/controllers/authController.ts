@@ -1,41 +1,48 @@
 import 'dotenv/config';
 
 import passport from 'passport';
-import { Strategy as GoogleStrategy } from 'passport-google-oauth2';
-import { GoogleSettingsType } from '../../utils/types';
+import { StrategyOptionsWithRequest, Strategy as GoogleStrategy } from 'passport-google-oauth2';
+import { NextFunction, Request, Response } from 'express';
 
-const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '';
 
-const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || '';
+const CLIENT_ID_LOCAL_GOOGLE = process.env.CLIENT_ID_LOCAL_GOOGLE || '';
 
-const googleSettings: GoogleSettingsType = {
-  clientID: GOOGLE_CLIENT_ID,
-  clientSecret: GOOGLE_CLIENT_SECRET,
+const CLIENT_SECRET_LOCAL_GOOGLE = process.env.CLIENT_SECRET_LOCAL_GOOGLE || '';
+
+const googleSettings: StrategyOptionsWithRequest = {
+  clientID: CLIENT_ID_LOCAL_GOOGLE,
+  clientSecret: CLIENT_SECRET_LOCAL_GOOGLE,
   callbackURL: 'http://localhost:3000/auth/google/callback',
   passReqToCallback: true,
 };
 
-// passport.use(
-//   new GoogleStrategy(
-//     googleSettings,
-//     ((request, accessToken, refreshToken, profile, done) => done(null, profile)
-//     ),
-//   ),
-// );
+type DoneType = (err: Error | null, user: Express.User) => void;
 
-passport.serializeUser((user, done) => {
+type AuthType = {
+  isLoggedIn: (req: Request, res: Response, next: NextFunction) => void;
+};
+
+passport.use(
+  new GoogleStrategy(
+    googleSettings,
+    ((request: Request, accessToken: string, refreshToken: string, profile: any, done: DoneType) => done(null, profile)
+    ),
+  ),
+);
+
+passport.serializeUser((user: Express.User, done: DoneType) => {
   done(null, user);
 });
 
-// passport.deserializeUser((user, done) => {
-//   done(null, user);
-// });
+passport.deserializeUser((user: Express.User, done: DoneType) => {
+  done(null, user);
+});
 
-// export const authController = {
-//   isLoggedIn(req, res, next) {
-//     req.user ? next() : res.sendStatus(401);
-//   },
-// };
+export const authController: AuthType = {
+  isLoggedIn: (req:Request, res: Response, next: NextFunction) => {
+    if (!req.user) return res.sendStatus(401);
+    return next();
+  },
+};
 
-// export default passport;
 export default passport;

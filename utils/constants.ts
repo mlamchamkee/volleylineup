@@ -1,4 +1,4 @@
-import { Player } from '../client/redux/dataStructure';
+import Player from '../client/redux/dataStructure';
 
 export const MAIN_THEME = {
   color: '#1B1A17',

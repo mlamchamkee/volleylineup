@@ -1,7 +1,6 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 
-// import passport, { authController } from '../controllers/authController';
-import passport from '../controllers/authController';
+import passport, { authController } from '../controllers/authController';
 
 import userController from '../controllers/userController';
 
@@ -13,7 +12,7 @@ const router = express.Router();
 
 router.get(
   '/google',
-  passport.authenticate('google', { scope: ['email', 'profile'] }),
+  passport.authenticate('google', { scope: ['email'] }),
 );
 
 router.get(
@@ -24,16 +23,15 @@ router.get(
   }),
   userController.getUserId,
   userController.addUser,
-  (req, res) => {
-    // console.log('request: ', req.user)
-    // res.cookie('email', req.user.email);
-    // res.cookie('name', req.user.given_name);
-    res.cookie('loggedin', true);
+  (req: any, res: Response): void => {
+    res.cookie('email', req.user.email);
+    res.cookie('picture', req.user.picture);
+    res.cookie('isLoggedIn', true);
     return res.redirect('../../');
   },
 );
 
-router.post('/logout', (req, res) =>
+router.post('/logout', (req: Request, res: Response) =>
   // req.logout();
   res.redirect('../../'));
 
