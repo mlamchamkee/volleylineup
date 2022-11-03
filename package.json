@@ -2,6 +2,9 @@
   "name": "volleylineup",
   "version": "0.1.0",
   "description": "Leading your volleyball team to victory!",
+  "engines": {
+    "node": "16.16.0"
+  },
   "main": "server/server.ts",
   "scripts": {
     "test": "jest --verbose",
