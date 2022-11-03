@@ -17,8 +17,8 @@ app.use(express.urlencoded({ extended: true }));
 // Passport and cookie-session methods for OAuth 2
 app.use(
   cookieSession({
-    name: 'github-auth-session',
-    keys: [process.env.key1 || '', process.env.key2 || ''],
+    name: 'auth-session',
+    keys: [process.env.KEY1 || '', process.env.KEY2 || ''],
   }),
 );
 app.use(passport.initialize());
