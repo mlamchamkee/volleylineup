@@ -23,6 +23,7 @@ export type AppStateType = {
   playerCount: number,
   lineup: LineupType,
   currentLineup: LineupType,
+  showLogin: boolean,
 };
 
 export type GoogleSettingsType = {

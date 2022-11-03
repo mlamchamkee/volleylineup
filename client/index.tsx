@@ -10,6 +10,7 @@ import NumberPlayers from './containers/NumberPlayers';
 import Court from './containers/Court';
 import Roster from './containers/Roster';
 import { MAIN_THEME } from '../utils/constants';
+import Login from './containers/Login';
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 
@@ -20,11 +21,15 @@ const theme = createTheme({
       contrastText: '#fff',
     },
     secondary: {
-      main: '#606F7B',
+      main: '#F0A500',
       contrastText: '#fff',
     },
     info: {
       main: '#8795A1',
+      contrastText: '#fff',
+    },
+    warning: {
+      main: '#fff',
       contrastText: '#fff',
     },
   },
@@ -38,6 +43,7 @@ root.render(
       <Roster />
       <Court />
       <StyledFab />
+      <Login />
     </Provider>
   </ThemeProvider>,
 );

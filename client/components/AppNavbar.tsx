@@ -11,6 +11,9 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import LoginIcon from '@mui/icons-material/Login';
+import { useAppDispatch, useAppSelector } from '../redux/store';
+import { toggleLogin } from '../redux/reducer';
 
 // const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Logout'];
@@ -33,6 +36,9 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const dispatch = useAppDispatch();
+  const handleLogin = () => dispatch(toggleLogin());
 
   return (
     <AppBar position="sticky">
@@ -125,11 +131,14 @@ function ResponsiveAppBar() {
             ))}
           </Box> */}
           <Box sx={{ }}>
-            <Tooltip title="Open settings">
+            <IconButton color="warning" onClick={handleLogin} sx={{ p: 0 }}>
+              <LoginIcon />
+            </IconButton>
+            {/* <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Andre Carneiro" src="/static/images/avatar/2.jpg" />
               </IconButton>
-            </Tooltip>
+            </Tooltip> */}
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"

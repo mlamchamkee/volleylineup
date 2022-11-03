@@ -8,6 +8,7 @@ const initialState: AppStateType = {
   playerCount: DEFAULT_PLAYER_COUNT,
   lineup: DEFAULT_LINEUP,
   currentLineup: DEFAULT_LINEUP,
+  showLogin: false,
 };
 
 const appSlice = createSlice({
@@ -38,6 +39,11 @@ const appSlice = createSlice({
     ) => {
       state.currentLineup.push(state.currentLineup.shift());
     },
+    toggleLogin: (
+      state: AppStateType,
+    ) => {
+      state.showLogin = !state.showLogin;
+    },
   },
 });
 
@@ -45,6 +51,7 @@ export const {
   setPlayerCount,
   updateLineup,
   rotate,
+  toggleLogin,
 } = appSlice.actions;
 
 export default appSlice.reducer;
