@@ -4,7 +4,6 @@ import passport from 'passport';
 import { StrategyOptionsWithRequest, Strategy as GoogleStrategy } from 'passport-google-oauth2';
 import { NextFunction, Request, Response } from 'express';
 
-
 const CLIENT_ID_LOCAL_GOOGLE = process.env.CLIENT_ID_LOCAL_GOOGLE || '';
 
 const CLIENT_SECRET_LOCAL_GOOGLE = process.env.CLIENT_SECRET_LOCAL_GOOGLE || '';
@@ -12,7 +11,7 @@ const CLIENT_SECRET_LOCAL_GOOGLE = process.env.CLIENT_SECRET_LOCAL_GOOGLE || '';
 const googleSettings: StrategyOptionsWithRequest = {
   clientID: CLIENT_ID_LOCAL_GOOGLE,
   clientSecret: CLIENT_SECRET_LOCAL_GOOGLE,
-  callbackURL: 'http://localhost:3000/auth/google/callback',
+  callbackURL: `${process.env.ROOT_URL}/auth/google/callback`,
   passReqToCallback: true,
 };
 
