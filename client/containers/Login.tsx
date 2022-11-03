@@ -35,15 +35,17 @@ function Login() {
             }}
           >
             <Button
-              variant="contained"
+              variant="outlined"
               href="/auth/google"
               // onClick={handleClick}
               sx={{ justifyContent: 'center', alignItems: 'center' }}
             >
-              <Box sx={{ p: 0.5 }}>
+              <Box>
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/24px-Google_%22G%22_Logo.svg.png" />
               </Box>
-              Login With Google
+              <Box sx={{ my: 1, ml: 2 }}>
+                Login With Google
+              </Box>
             </Button>
           </Box>
         </DialogContent>
