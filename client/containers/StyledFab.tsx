@@ -12,14 +12,14 @@ function StyledFab() {
   const handleClick = () => dispatch(rotate());
 
   return (
-    <Box sx={{ height: 60 }}>
+    <Box sx={{ height: 80 }}>
       <Fab
         color="primary"
         aria-label="add"
         onClick={handleClick}
         sx={{
           position: 'fixed',
-          bottom: 10,
+          bottom: 35,
           left: 0,
           right: 0,
           margin: '0 auto',

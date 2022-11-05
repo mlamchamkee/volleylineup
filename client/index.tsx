@@ -46,11 +46,10 @@ root.render(
       <NumberPlayers />
       <Roster />
       <IconButton />
-
       <Net />
       <Court />
-      <Footer />
       <StyledFab />
+      <Footer />
       <Login />
     </Provider>
   </ThemeProvider>,
