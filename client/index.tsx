@@ -46,6 +46,7 @@ root.render(
       <NumberPlayers />
       <Roster />
       <IconButton />
+
       <Net />
       <Court />
       <Footer />
