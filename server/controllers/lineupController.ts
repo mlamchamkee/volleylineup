@@ -4,14 +4,14 @@ import db from '../models/sqlModel';
 
 export default {
   getLineups: async (req: any, res: Response, next: NextFunction) => {
-    // console.log('userController.getLineups');
     const { userId } = res.locals;
+    const { playerCount } = req.body;
 
     const queryString = `
     SELECT * FROM public.lineup
-    WHERE user_id=$1
+    WHERE user_id=$1 AND player_count=$2
     `;
-    const params = [userId];
+    const params = [userId, playerCount];
 
     try {
       const result = await db.query(queryString, params);
@@ -33,7 +33,7 @@ export default {
     INSERT INTO public.lineup (user_id, player_count, lineup)
     VALUES ($1, $2, $3)
     ON CONFLICT (user_id, player_count) DO UPDATE
-    SET lineup = ($3)
+    SET lineup=$3
     RETURNING (user_id, player_count, lineup)
     `;
     const params = [userId, playerCount, lineup];
@@ -50,27 +50,27 @@ export default {
       });
     }
   },
-  deleteLineup: async (req: any, res: Response, next: NextFunction) => {
-    // console.log('userController.postLineup');
-    const { userId } = res.locals;
-    const { description } = req.body;
+  // deleteLineup: async (req: any, res: Response, next: NextFunction) => {
+  //   // console.log('userController.postLineup');
+  //   const { userId } = res.locals;
+  //   const { description } = req.body;
 
-    const queryString = `
-    DELETE FROM public.lineup
-    WHERE user_id=$1 AND description=$2
-    `;
-    const params = [userId, description];
+  //   const queryString = `
+  //   DELETE FROM public.lineup
+  //   WHERE user_id=$1 AND description=$2
+  //   `;
+  //   const params = [userId, description];
 
-    try {
-      const result = await db.query(queryString, params);
-      res.locals.lineup = result.rows;
-      return next();
-    } catch (err) {
-      return next({
-        log: `error in deleteLineup: ${err}`,
-        status: 500,
-        message: 'error occurred in deleteLineup middleware function',
-      });
-    }
-  },
+  //   try {
+  //     const result = await db.query(queryString, params);
+  //     res.locals.lineup = result.rows;
+  //     return next();
+  //   } catch (err) {
+  //     return next({
+  //       log: `error in deleteLineup: ${err}`,
+  //       status: 500,
+  //       message: 'error occurred in deleteLineup middleware function',
+  //     });
+  //   }
+  // },
 };

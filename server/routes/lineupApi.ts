@@ -13,7 +13,7 @@ const router: Router = express.Router();
 // Route to get lineups for a user
 router.get(
   '/',
-  userController.getUserId,
+  // userController.getUserId,
   lineupController.getLineups,
   (req, res) => res.status(200).json(res.locals.lineup),
 );
@@ -27,10 +27,10 @@ router.post(
 );
 
 // Route to delete lineup for a user
-router.delete(
-  '/',
-  userController.getUserId,
-  lineupController.deleteLineup,
-  (req, res) => res.status(200).json(res.locals.lineup),
-);
+// router.delete(
+//   '/',
+//   userController.getUserId,
+//   lineupController.deleteLineup,
+//   (req, res) => res.status(200).json(res.locals.lineup),
+// );
 export default router;
