@@ -28,7 +28,7 @@ export type AppStateType = {
   cacheLineup: LineupType | null,
   currentLineup: LineupType,
   showLogin: boolean,
-  showSaveDialog: boolean,
+  showSavePopover: boolean,
   isLoggedIn: boolean | undefined,
   email: string | undefined,
   picture: string | undefined,

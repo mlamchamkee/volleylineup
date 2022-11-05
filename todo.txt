@@ -5,7 +5,7 @@
 [x] fix styling
 [x] Hash emails
 [ ] Logout
-[ ] Notification that Lineup was saved
+[x] Notification that Lineup was saved
 [x] FB OAuth
 [x] Prompt to login on save lineup
 [x] remove serialized error
