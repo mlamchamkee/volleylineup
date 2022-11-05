@@ -1,4 +1,4 @@
-import { Player } from '../client/redux/dataStructure';
+import player from '../client/redux/dataStructure';
 
 export const MAIN_THEME = {
   color: '#1B1A17',
@@ -15,16 +15,16 @@ export const LIGHT_THEME = {
 };
 
 export const DEFAULT_LINEUP = [
-  new Player(1, 'Micah Christenson', 'S'),
-  new Player(2, 'Thomas Jaeschke', 'OH'),
-  new Player(3, 'Tyler Mitchem', 'MB'),
-  new Player(4, 'Matt Anderson', 'OPP'),
-  new Player(5, 'Cody Kessel', 'OH'),
-  new Player(6, 'Max Holt', 'MB'),
-  new Player(7, '7', 'OH'),
-  new Player(8, '8', 'MB'),
-  new Player(9, '9', 'OPP'),
-  new Player(10, '10', 'MB'),
+  player(1, 'Micah Christenson', 'S'),
+  player(2, 'Thomas Jaeschke', 'OH'),
+  player(3, 'Tyler Mitchem', 'MB'),
+  player(4, 'Matt Anderson', 'OPP'),
+  player(5, 'Cody Kessel', 'OH'),
+  player(6, 'Max Holt', 'MB'),
+  player(7, '7', 'OH'),
+  player(8, '8', 'MB'),
+  player(9, '9', 'OPP'),
+  player(10, '10', 'MB'),
 
 ];
 

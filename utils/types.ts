@@ -1,5 +1,8 @@
-import { Player } from '../client/redux/dataStructure';
-
+type Player = {
+  num: number,
+  name: string,
+  position: PositionType,
+};
 export type GlobalError = {
   log: string;
   status: number;
@@ -22,5 +25,16 @@ export type RowType = {
 export type AppStateType = {
   playerCount: number,
   lineup: LineupType,
+  cacheLineup: LineupType | null,
   currentLineup: LineupType,
+  showLogin: boolean,
+  showSavePopover: boolean,
+  isLoggedIn: boolean | undefined,
+  email: string | undefined,
+  picture: string | undefined,
+};
+
+export type PostLineupPayload = {
+  playerCount: number,
+  lineup: Array<Player>,
 };

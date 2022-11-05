@@ -1,7 +1,10 @@
 {
   "name": "volleylineup",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "Leading your volleyball team to victory!",
+  "engines": {
+    "node": "16.16.0"
+  },
   "main": "server/server.ts",
   "scripts": {
     "test": "jest --verbose",
@@ -41,15 +44,11 @@
     "@testing-library/user-event": "^14.4.3",
     "@types/js-cookie": "^3.0.2",
     "@types/node": "^18.7.18",
-    "@types/passport": "^1.0.11",
-    "@types/passport-github2": "^1.2.5",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
-    "@types/react-router-dom": "^5.3.3",
     "@types/redux-mock-store": "^1.0.3",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
-    "axios": "^0.27.2",
     "babel-jest": "^29.0.3",
     "babel-loader": "^8.2.5",
     "babel-plugin-import": "^1.13.5",
@@ -68,7 +67,6 @@
     "jest-environment-jsdom": "^28.1.0",
     "jest-puppeteer": "^6.1.0",
     "nodemon": "^2.0.20",
-    "pg": "^8.8.0",
     "puppeteer": "^14.2.1",
     "react-test-renderer": "^18.2.0",
     "redux-mock-store": "^1.5.4",
@@ -92,6 +90,11 @@
     "@reduxjs/toolkit": "^1.8.5",
     "@types/cookie-session": "^2.0.44",
     "@types/express": "^4.17.14",
+    "@types/passport": "^1.0.11",
+    "@types/passport-facebook": "^2.1.11",
+    "@types/passport-google-oauth2": "^0.1.5",
+    "@types/pg": "^8.6.5",
+    "axios": "^0.27.2",
     "cookie-parser": "^1.4.6",
     "cookie-session": "^2.0.0",
     "dotenv": "^16.0.3",
@@ -99,12 +102,12 @@
     "file-loader": "^6.2.0",
     "js-cookie": "^3.0.1",
     "passport": "^0.5.0",
-    "passport-github2": "^0.1.12",
+    "passport-facebook": "^3.0.0",
+    "passport-google-oauth2": "^0.2.0",
     "pg": "^8.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.4",
-    "react-router-dom": "^6.4.1",
     "ts-node": "^10.9.1"
   }
 }

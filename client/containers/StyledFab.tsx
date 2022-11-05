@@ -5,7 +5,7 @@ import Fab from '@mui/material/Fab';
 import Box from '@mui/material/Box';
 
 import { rotate } from '../redux/reducer';
-import { useAppDispatch, useAppSelector } from '../redux/store';
+import { useAppDispatch } from '../redux/store';
 
 function StyledFab() {
   const dispatch = useAppDispatch();
@@ -19,7 +19,7 @@ function StyledFab() {
         onClick={handleClick}
         sx={{
           position: 'fixed',
-          bottom: 10,
+          bottom: 35,
           left: 0,
           right: 0,
           margin: '0 auto',

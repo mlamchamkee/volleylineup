@@ -6,8 +6,8 @@ import {
 } from '@mui/x-data-grid/';
 
 import { MAIN_THEME } from '../../utils/constants';
-import { useAppDispatch, useAppSelector } from '../redux/store';
 import { updateLineup } from '../redux/reducer';
+import { useAppDispatch, useAppSelector } from '../redux/store';
 
 const columns: GridColDef[] = [
   {
@@ -44,7 +44,7 @@ function Roster() {
   const dispatch = useAppDispatch();
 
   const dataRows = [];
-  for (let i = 0; i < playerCount; i++) {
+  for (let i = 0; i < playerCount; i += 1) {
     dataRows.push({
       id: i, num: i + 1, name: lineup[i].name, position: lineup[i].position,
     });
@@ -71,7 +71,6 @@ function Roster() {
   const height = 378 + (playerCount - 8) * 40;
 
   return (
-  // <div style={{ height: 600, maxWidth: 500, margin: 'auto' }}>
     <Box sx={{
       height,
       maxWidth: 352,
@@ -80,9 +79,17 @@ function Roster() {
       alignItems: 'center',
       justifyContent: 'center',
       '& .col-header': {
-        color: MAIN_THEME.fontColorSecondary,
+        color: MAIN_THEME.fontColor,
         backgroundColor: MAIN_THEME.color,
       },
+      '& .MuiSvgIcon-root': {
+        color: MAIN_THEME.fontColor,
+        opacity: 0.7,
+      },
+      // '& .row': {
+      //   color: MAIN_THEME.fontColor,
+      //   backgroundColor: MAIN_THEME.color,
+      // },
     }}
     >
       <DataGrid
@@ -94,12 +101,11 @@ function Roster() {
         onProcessRowUpdateError={handleProcessRowUpdateError}
         experimentalFeatures={{ newEditingApi: true }}
         hideFooter
-          // hideFooterRowCount={true}
         hideFooterSelectedRowCount
         hideFooterPagination
+        getRowClassName={() => 'row'}
       />
     </Box>
-  // </div>
   );
 }
 

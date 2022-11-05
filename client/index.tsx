@@ -1,15 +1,12 @@
-import React from 'react';
+import * as React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { store } from './redux/store';
-import AppNavbar from './components/AppNavbar';
-import StyledFab from './components/StyledFab';
-import NumberPlayers from './containers/NumberPlayers';
-import Court from './containers/Court';
-import Roster from './containers/Roster';
+
 import { MAIN_THEME } from '../utils/constants';
+import App from './App';
+import { store } from './redux/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 
@@ -20,11 +17,15 @@ const theme = createTheme({
       contrastText: '#fff',
     },
     secondary: {
-      main: '#606F7B',
+      main: '#F0A500',
       contrastText: '#fff',
     },
     info: {
       main: '#8795A1',
+      contrastText: '#fff',
+    },
+    warning: {
+      main: '#fff',
       contrastText: '#fff',
     },
   },
@@ -33,11 +34,7 @@ const theme = createTheme({
 root.render(
   <ThemeProvider theme={theme}>
     <Provider store={store}>
-      <AppNavbar />
-      <NumberPlayers />
-      <Roster />
-      <Court />
-      <StyledFab />
+      <App />
     </Provider>
   </ThemeProvider>,
 );
