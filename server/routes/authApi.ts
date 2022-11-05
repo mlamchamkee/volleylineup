@@ -44,10 +44,11 @@ router.get(
   userController.getUserId,
   userController.addUser,
   (req: any, res: Response): void => {
+    if (!req.user._json.email) return res.redirect('../../failure');
     res.cookie('email', req.user._json.email);
     res.cookie('picture', req.user._json.picture.data.url);
     res.cookie('isLoggedIn', true);
-    return res.redirect('../../../');
+    return res.redirect('../../');
   },
 );
 
