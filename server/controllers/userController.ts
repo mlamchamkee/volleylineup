@@ -1,18 +1,27 @@
 import { NextFunction, Request, Response } from 'express';
 
+import bcrypt from 'bcrypt';
+import { createHash } from 'node:crypto';
 import db from '../models/sqlModel';
+import 'dotenv/config';
 
+// const {
+//   createHash,
+// } = await import('node:crypto');
 export default {
   getUserId: async (req: any, res: Response, next: NextFunction) => {
-    // console.log('userController.getUserId');
-    let email;
-    if (req.user) email = req.user.email;
+    let hashEmail;
+    if (req.user) {
+      const hash = createHash('sha256');
+      hash.update(req.user.email + process.env.HASH_KEY);
+      hashEmail = hash.digest('hex');
+    }
 
     const queryString = `
     SELECT user_id FROM public.user
     WHERE email=$1
     `;
-    const params = [email];
+    const params = [hashEmail];
 
     try {
       const result = await db.query(queryString, params);
@@ -27,14 +36,19 @@ export default {
     }
   },
   addUser: async (req: any, res: Response, next: NextFunction) => {
-    const { email } = req.user;
+    let hashEmail;
+    if (req.user) {
+      const hash = createHash('sha256');
+      hash.update(req.user.email + process.env.HASH_KEY);
+      hashEmail = hash.digest('hex');
+    }
 
     const queryString = `
     INSERT INTO public.user (email)
     VALUES ($1)
     RETURNING (user_id)
     `;
-    const params = [email];
+    const params = [hashEmail];
 
     if (res.locals.userId === undefined) {
       try {
