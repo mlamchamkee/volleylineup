@@ -55,8 +55,8 @@ const appSlice = createSlice({
       state: AppStateType,
     ) => {
       Cookies.remove('isLoggedIn');
-      Cookies.remove('email');
       Cookies.remove('picture');
+      Cookies.remove('email');
     },
     syncCookies: (
       state: AppStateType,

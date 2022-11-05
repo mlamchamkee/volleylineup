@@ -3,6 +3,7 @@
 [x] API routes for saving rotations
 [x] API routes for getting rotations
 [x] fix styling
+[x] Hash emails
 [ ] Logout
 [ ] FB OAuth
 [ ] remove serialized error
