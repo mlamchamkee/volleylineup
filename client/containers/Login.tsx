@@ -24,7 +24,7 @@ function Login() {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
+        <DialogTitle id="alert-dialog-title" textAlign="center">
           Log into your account
         </DialogTitle>
         <DialogContent>
