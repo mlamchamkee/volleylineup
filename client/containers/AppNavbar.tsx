@@ -13,8 +13,6 @@ import LoginIcon from '@mui/icons-material/Login';
 import { useAppDispatch, useAppSelector } from '../redux/store';
 import { toggleLogin, clearCookies, syncCookies } from '../redux/reducer';
 
-const settings = ['Logout'];
-
 function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -32,6 +30,7 @@ function ResponsiveAppBar() {
   const handleLogout = () => {
     dispatch(clearCookies());
     dispatch(syncCookies());
+    setAnchorElUser(null);
   };
 
   return (

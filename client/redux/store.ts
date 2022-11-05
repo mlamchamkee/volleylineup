@@ -9,17 +9,6 @@ export const store = configureStore({
   reducer: {
     app: appReducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-    serializableCheck: {
-      // Ignore these action types
-      ignoredActions: ['app/getLineup/pending', 'app/getLineup/fulfilled', 'app/updateLineup', 'app/setPlayerCount'],
-      // Ignore these field paths in all actions
-      ignoredActionPaths: ['app/getLineup/pending', 'app/getLineup/fulfilled', 'app/updateLineup', 'app/setPlayerCount'],
-      // Ignore these paths in the state
-      // ignoredPaths: ['items.dates'],
-      ignoredPaths: ['app/getLineup/pending', 'app/getLineup/fulfilled', 'app/updateLineup', 'app/setPlayerCount'],
-    },
-  }),
 });
 
 type RootState = ReturnType<typeof store.getState>;

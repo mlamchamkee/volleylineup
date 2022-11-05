@@ -32,6 +32,8 @@ function Court() {
     10: [0, 1, 5, 6],
   };
 
+  
+
   const gridItems:Array<JSX.Element> = order[playerCount].map((num) => {
     const player = currentLineup[num];
     if (player) {

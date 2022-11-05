@@ -5,7 +5,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { DEFAULT_LINEUP, DEFAULT_PLAYER_COUNT } from '../../utils/constants';
 import { AppStateType, PostLineupPayload, RowType } from '../../utils/types';
-import Player from './dataStructure';
+import player from './dataStructure';
 
 const initialState: AppStateType = {
   playerCount: DEFAULT_PLAYER_COUNT,
@@ -14,6 +14,7 @@ const initialState: AppStateType = {
   showLogin: false,
   showSaveDialog: false,
   isLoggedIn: Boolean(Cookies.get('isLoggedIn')),
+
   email: Cookies.get('email'),
   picture: Cookies.get('picture'),
 };
@@ -34,7 +35,7 @@ const appSlice = createSlice({
       action: PayloadAction<RowType>,
     ) => {
       const newRow = action.payload;
-      const newPlayer = new Player(Number(newRow.num), newRow.name, newRow.position);
+      const newPlayer = player(Number(newRow.num), newRow.name, newRow.position);
       state.lineup[action.payload.id] = newPlayer;
 
       const arrNum = state.currentLineup.map((el) => el.num);
@@ -72,7 +73,6 @@ const appSlice = createSlice({
     });
     builder.addCase(getLineup.fulfilled, (state: AppStateType, action: any) => {
       if (action.payload.length) state.lineup = action.payload;
-      // state.currentLineup = state.lineup.filter((el) => el.num < state.playerCount + 1);
     });
   },
 });
@@ -104,7 +104,6 @@ const thunks = {
       } catch (error) {
         console.log('app/getLineup', error);
       }
-      // console.log(response?.data);
       if (response?.data.lineup) response = JSON.parse(response?.data.lineup);
       return response;
     },

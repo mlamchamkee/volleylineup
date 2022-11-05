@@ -9,9 +9,8 @@ function Footer() {
     <Box
       id="footer"
       sx={{
-        py: 3,
+        py: 0,
         px: 2,
-        mt: 'auto',
       }}
     >
       <Typography variant="body2" color="text.secondary" align="center">
