@@ -5,6 +5,7 @@
 [x] fix styling
 [x] Hash emails
 [ ] Logout
-[ ] FB OAuth
-[ ] remove serialized error
+[x] FB OAuth
+[ ] Prompt to login on save lineup
+[x] remove serialized error
 [ ] light mode dark mode
