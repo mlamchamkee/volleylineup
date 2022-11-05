@@ -44,7 +44,7 @@ function Roster() {
   const dispatch = useAppDispatch();
 
   const dataRows = [];
-  for (let i = 0; i < playerCount; i++) {
+  for (let i = 0; i < playerCount; i += 1) {
     dataRows.push({
       id: i, num: i + 1, name: lineup[i].name, position: lineup[i].position,
     });
