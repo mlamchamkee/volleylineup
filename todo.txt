@@ -1,5 +1,6 @@
 [x] create database noSQL
 [x] OAuth
 [x] API routes for saving rotations
-[ ] API routes for getting rotations
+[x] API routes for getting rotations
 [ ] light mode dark mode
+[ ] remove serialized error

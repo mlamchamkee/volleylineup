@@ -20,29 +20,6 @@ export default function NumberPlayers() {
 
   const marks = [6, 7, 8, 9, 10].map((el) => ({ value: el, label: String(el) }));
 
-  // const marks = [
-  //   {
-  //     value: 6,
-  //     label: '6',
-  //   },
-  //   {
-  //     value: 7,
-  //     label: '7',
-  //   },
-  //   {
-  //     value: 8,
-  //     label: '8',
-  //   },
-  //   {
-  //     value: 9,
-  //     label: '9',
-  //   },
-  //   {
-  //     value: 10,
-  //     label: '10',
-  //   },
-  // ];
-
   function valuetext(value: number) {
     return `${value}`;
   }
@@ -59,10 +36,9 @@ export default function NumberPlayers() {
           </Grid>
           <Grid item xs>
             <Slider
-              // value={typeof playerCount === 'number' ? playerCount : 6}
               aria-label="Custom marks"
               onChange={handleSliderChange}
-              defaultValue={playerCount}
+              value={playerCount}
               getAriaValueText={valuetext}
               valueLabelDisplay="auto"
               step={1}
