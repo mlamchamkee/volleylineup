@@ -1,6 +1,6 @@
 {
   "name": "volleylineup",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Leading your volleyball team to victory!",
   "engines": {
     "node": "16.16.0"
