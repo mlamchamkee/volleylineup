@@ -16,8 +16,6 @@ function Login() {
   const dispatch = useAppDispatch();
   const handleClose = () => dispatch(toggleLogin());
 
-  // const handleClickGoogle = () => dispatch(toggleLogin());
-
   return (
     <div>
       <Dialog
@@ -26,7 +24,7 @@ function Login() {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
+        <DialogTitle id="alert-dialog-title" textAlign="center">
           Log into your account
         </DialogTitle>
         <DialogContent>
@@ -38,7 +36,6 @@ function Login() {
             <Button
               variant="outlined"
               href="/auth/google"
-              // onClick={handleClick}
               sx={{ justifyContent: 'center', alignItems: 'center' }}
             >
               <Box>

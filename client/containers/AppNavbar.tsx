@@ -47,11 +47,6 @@ function ResponsiveAppBar() {
               <LoginIcon />
             </IconButton>
             )}
-            {/* {isLoggedIn && (
-            <IconButton color="warning" onClick={handleLogout} sx={{ p: 0 }}>
-              <Avatar alt={email} src={pciture} />
-            </IconButton>
-            )} */}
             {isLoggedIn && (
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

@@ -79,9 +79,17 @@ function Roster() {
       alignItems: 'center',
       justifyContent: 'center',
       '& .col-header': {
-        color: MAIN_THEME.fontColorSecondary,
+        color: MAIN_THEME.fontColor,
         backgroundColor: MAIN_THEME.color,
       },
+      '& .MuiSvgIcon-root': {
+        color: MAIN_THEME.fontColor,
+        opacity: 0.7,
+      },
+      // '& .row': {
+      //   color: MAIN_THEME.fontColor,
+      //   backgroundColor: MAIN_THEME.color,
+      // },
     }}
     >
       <DataGrid
@@ -95,6 +103,7 @@ function Roster() {
         hideFooter
         hideFooterSelectedRowCount
         hideFooterPagination
+        getRowClassName={() => 'row'}
       />
     </Box>
   );
