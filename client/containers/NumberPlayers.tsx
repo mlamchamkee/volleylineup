@@ -15,8 +15,8 @@ export default function NumberPlayers() {
   const dispatch = useAppDispatch();
 
   const handleSliderChange = async (event: Event, newValue: number) => {
-    dispatch(getLineup(newValue));
     dispatch(setPlayerCount(newValue));
+    dispatch(getLineup(newValue));
   };
 
   function valuetext(value: number) {

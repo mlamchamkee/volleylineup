@@ -78,7 +78,7 @@ const appSlice = createSlice({
       state.showSaveDialog = true;
     });
     builder.addCase(getLineup.fulfilled, (state: AppStateType, action: any) => {
-      if (action.payload.length) state.lineup = action.payload;
+      if (action.payload) state.lineup = action.payload;
     });
   },
 });
@@ -96,13 +96,14 @@ const thunks = {
       } catch (error) {
         console.log('app/postLineup', error);
       }
-      return response;
+      return response?.data[0];
     },
   ),
   getLineup: createAsyncThunk(
     'app/getLineup',
     async (playerCount: number) => {
       let response;
+      let lineup;
       try {
         response = await axios.get(
           `/api/lineup/${playerCount}`,
@@ -110,8 +111,8 @@ const thunks = {
       } catch (error) {
         console.log('app/getLineup', error);
       }
-      if (response?.data.lineup) response = JSON.parse(response?.data.lineup);
-      return response;
+      if (response?.data.lineup) lineup = JSON.parse(response?.data.lineup);
+      return lineup;
     },
   ),
 };
