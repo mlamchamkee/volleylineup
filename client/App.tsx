@@ -11,15 +11,23 @@ import Net from './containers/Net';
 import NumberPlayers from './containers/NumberPlayers';
 import Roster from './containers/Roster';
 import StyledFab from './containers/StyledFab';
-import { getLineup } from './redux/reducer';
+import { postLineup, clearCacheLineup, getLineup } from './redux/reducer';
 import { useAppDispatch, useAppSelector } from './redux/store';
 
 export default function App() {
-  const { isLoggedIn, playerCount } = useAppSelector((state) => state.app);
+  const { isLoggedIn, cacheLineup, playerCount } = useAppSelector((state) => state.app);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (isLoggedIn) dispatch(getLineup(playerCount));
+    if (isLoggedIn && cacheLineup) {
+      dispatch(postLineup({ playerCount, lineup: cacheLineup }));
+      sessionStorage.removeItem('playerCount');
+      sessionStorage.removeItem('lineup');
+    }
+    if (isLoggedIn) {
+      dispatch(getLineup(playerCount));
+      dispatch(clearCacheLineup());
+    }
   }, []);
 
   return (

@@ -8,8 +8,9 @@ import { AppStateType, PostLineupPayload, RowType } from '../../utils/types';
 import player from './dataStructure';
 
 const initialState: AppStateType = {
-  playerCount: DEFAULT_PLAYER_COUNT,
+  playerCount: Number(sessionStorage.getItem('playerCount')) || DEFAULT_PLAYER_COUNT,
   lineup: DEFAULT_LINEUP,
+  cacheLineup: JSON.parse(sessionStorage.getItem('lineup')),
   currentLineup: DEFAULT_LINEUP,
   showLogin: false,
   showSaveDialog: false,
@@ -23,6 +24,13 @@ const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
+    cacheLineup: (state: AppStateType) => {
+      sessionStorage.setItem('playerCount', String(state.playerCount));
+      sessionStorage.setItem('lineup', JSON.stringify(state.lineup));
+    },
+    clearCacheLineup: (state: AppStateType) => {
+      state.cacheLineup = null;
+    },
     setPlayerCount: (
       state: AppStateType,
       action: PayloadAction<number>,
@@ -109,6 +117,8 @@ const thunks = {
 };
 
 export const {
+  cacheLineup,
+  clearCacheLineup,
   setPlayerCount,
   updateLineup,
   rotate,
