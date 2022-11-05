@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 
-import passport, { authController } from '../controllers/authController';
+import googlePassport from '../controllers/googlePassport';
+import facebookPassport from '../controllers/facebookPassport';
 
 import userController from '../controllers/userController';
 
@@ -12,13 +13,12 @@ const router = express.Router();
 
 router.get(
   '/google',
-  passport.authenticate('google', { scope: ['email'] }),
+  googlePassport.authenticate('google', { scope: ['email'] }),
 );
 
 router.get(
   '/google/callback',
-  passport.authenticate('google', {
-    // successRedirect: '../../',
+  googlePassport.authenticate('google', {
     failureRedirect: '/failure',
   }),
   userController.getUserId,
@@ -26,6 +26,27 @@ router.get(
   (req: any, res: Response): void => {
     res.cookie('email', req.user.email);
     res.cookie('picture', req.user.picture);
+    res.cookie('isLoggedIn', true);
+    return res.redirect('../../');
+  },
+);
+
+router.get(
+  '/facebook',
+  facebookPassport.authenticate('facebook', { scope: ['email'] }),
+);
+
+router.get(
+  '/facebook/callback',
+  facebookPassport.authenticate('facebook', {
+    failureRedirect: '/failure',
+  }),
+  userController.getUserId,
+  userController.addUser,
+  (req: any, res: Response): void => {
+    if (!req.user._json.email) return res.redirect('../../failure');
+    res.cookie('email', req.user._json.email);
+    res.cookie('picture', req.user._json.picture.data.url);
     res.cookie('isLoggedIn', true);
     return res.redirect('../../');
   },
