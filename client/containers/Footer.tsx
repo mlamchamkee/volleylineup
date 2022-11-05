@@ -17,7 +17,7 @@ function Footer() {
       <Typography variant="body2" color="text.secondary" align="center">
         {'Copyright © '}
         <Link color="inherit" href="https://github.com/mlamchamkee/volleylineup">
-          VolleyLineup
+          Volley Lineup
         </Link>
         {' '}
         {new Date().getFullYear()}
