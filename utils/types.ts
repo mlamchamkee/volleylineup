@@ -24,7 +24,13 @@ export type AppStateType = {
   lineup: LineupType,
   currentLineup: LineupType,
   showLogin: boolean,
+  showSaveDialog: boolean,
   isLoggedIn: boolean | undefined,
   email: string | undefined,
   picture: string | undefined,
+};
+
+export type PostLineupPayload = {
+  playerCount: number,
+  lineup: Array<Player>,
 };

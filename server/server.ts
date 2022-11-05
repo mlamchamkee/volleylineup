@@ -4,6 +4,7 @@ import cookieSession from 'cookie-session';
 import express, { NextFunction, Request, Response } from 'express';
 import passport from 'passport';
 import path from 'path';
+
 import { GlobalError } from '../utils/types';
 import authRouter from './routes/authApi';
 import lineupRouter from './routes/lineupApi';
@@ -37,7 +38,7 @@ app.get('/bundle.js', (req: Request, res: Response) => res.status(200).sendFile(
 
 // Routes
 app.use('/auth', authRouter);
-app.use('/lineup', lineupRouter);
+app.use('/api/lineup', lineupRouter);
 
 // Serve base HTML file
 app.get('*', (req: Request, res: Response) => res.status(200).sendFile(path.join(__dirname, '../dist/index.html')));

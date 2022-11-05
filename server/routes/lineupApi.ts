@@ -5,10 +5,10 @@ import lineupController from '../controllers/lineupController';
 
 const router: Router = express.Router();
 
-// Route to add user to the SQL DB upon signing in to app for first time
-router.post('/:email', (req, res) => {
-  res.status(200).send('User added!');
-});
+// // Route to add user to the SQL DB upon signing in to app for first time
+// router.post('/:email', (req, res) => {
+//   res.status(200).send('User added!');
+// });
 
 // Route to get lineups for a user
 router.get(

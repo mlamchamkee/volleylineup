@@ -1,9 +1,10 @@
+import axios from 'axios';
 import Cookies from 'js-cookie';
 
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { DEFAULT_LINEUP, DEFAULT_PLAYER_COUNT } from '../../utils/constants';
-import { AppStateType, RowType } from '../../utils/types';
+import { AppStateType, PostLineupPayload, RowType } from '../../utils/types';
 import Player from './dataStructure';
 
 const initialState: AppStateType = {
@@ -11,6 +12,7 @@ const initialState: AppStateType = {
   lineup: DEFAULT_LINEUP,
   currentLineup: DEFAULT_LINEUP,
   showLogin: false,
+  showSaveDialog: false,
   isLoggedIn: Boolean(Cookies.get('isLoggedIn')),
   email: Cookies.get('email'),
   picture: Cookies.get('picture'),
@@ -64,7 +66,31 @@ const appSlice = createSlice({
       state.picture = Cookies.get('picture');
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(postLineup.fulfilled, (state: AppStateType) => {
+      console.log('Lineup Saved');
+      state.showSaveDialog = true;
+    });
+  },
 });
+
+const thunks = {
+  postLineup: createAsyncThunk(
+    'app/saveLineup',
+    async (payload: PostLineupPayload) => {
+      let response;
+      try {
+        response = await axios.post(
+          '/api/lineup/',
+          { playerCount: payload.playerCount, lineup: JSON.stringify(payload.lineup) },
+        );
+      } catch (error) {
+        console.log('app/saveLineup', error);
+      }
+      return response;
+    },
+  ),
+};
 
 export const {
   setPlayerCount,
@@ -74,5 +100,7 @@ export const {
   clearCookies,
   syncCookies,
 } = appSlice.actions;
+
+export const { postLineup } = thunks;
 
 export default appSlice.reducer;

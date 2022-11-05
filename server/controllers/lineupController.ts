@@ -26,16 +26,17 @@ export default {
     }
   },
   postLineup: async (req: any, res: Response, next: NextFunction) => {
-    // console.log('userController.postLineup');
     const { userId } = res.locals;
-    const { description, lineup } = req.body;
+    const { playerCount, lineup } = req.body;
 
     const queryString = `
-    INSERT INTO public.lineup (user_id, description, lineup)
+    INSERT INTO public.lineup (user_id, player_count, lineup)
     VALUES ($1, $2, $3)
-    ON CONFLICT (userId, description) DO UPDATE
+    ON CONFLICT (user_id, player_count) DO UPDATE
+    SET lineup = ($3)
+    RETURNING (user_id, player_count, lineup)
     `;
-    const params = [userId, description, lineup];
+    const params = [userId, playerCount, lineup];
 
     try {
       const result = await db.query(queryString, params);
