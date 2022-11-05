@@ -35,7 +35,7 @@ function Login() {
           >
             <Button
               variant="outlined"
-              href="/auth/google"
+              href="/auth/facebook"
               sx={{ justifyContent: 'center', alignItems: 'center' }}
             >
               <Box>

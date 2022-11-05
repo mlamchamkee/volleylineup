@@ -1,13 +1,10 @@
-import { NextFunction, Request, Response } from 'express';
-
-import bcrypt from 'bcrypt';
-import { createHash } from 'node:crypto';
-import db from '../models/sqlModel';
 import 'dotenv/config';
 
-// const {
-//   createHash,
-// } = await import('node:crypto');
+import { NextFunction, Response } from 'express';
+import { createHash } from 'node:crypto';
+
+import db from '../models/sqlModel';
+
 export default {
   getUserId: async (req: any, res: Response, next: NextFunction) => {
     let hashEmail;
