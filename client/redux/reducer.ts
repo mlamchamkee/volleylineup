@@ -13,7 +13,7 @@ const initialState: AppStateType = {
   cacheLineup: JSON.parse(sessionStorage.getItem('lineup')),
   currentLineup: DEFAULT_LINEUP,
   showLogin: false,
-  showSaveDialog: false,
+  showSavePopover: false,
   isLoggedIn: Boolean(Cookies.get('isLoggedIn')),
 
   email: Cookies.get('email'),
@@ -72,10 +72,15 @@ const appSlice = createSlice({
       state.email = Cookies.get('email');
       state.picture = Cookies.get('picture');
     },
+    toggleSavePopover: (
+      state: AppStateType,
+    ) => {
+      state.showSavePopover = !state.showSavePopover;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(postLineup.fulfilled, (state: AppStateType) => {
-      state.showSaveDialog = true;
+      state.showSavePopover = true;
     });
     builder.addCase(getLineup.fulfilled, (state: AppStateType, action: any) => {
       if (action.payload) state.lineup = action.payload;
@@ -126,6 +131,7 @@ export const {
   toggleLogin,
   clearCookies,
   syncCookies,
+  toggleSavePopover,
 } = appSlice.actions;
 
 export const { postLineup, getLineup } = thunks;
