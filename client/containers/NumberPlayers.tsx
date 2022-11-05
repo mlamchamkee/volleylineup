@@ -26,7 +26,7 @@ export default function NumberPlayers() {
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', mt: 1 }}>
       <Box sx={{ width: 300 }}>
-        <Typography id="input-slider" gutterBottom>
+        <Typography textAlign="center">
           Number of Players
         </Typography>
         <Grid container spacing={2} alignItems="center">
