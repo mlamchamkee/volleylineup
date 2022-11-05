@@ -52,9 +52,7 @@ const appSlice = createSlice({
     ) => {
       state.showLogin = !state.showLogin;
     },
-    clearCookies: (
-      state: AppStateType,
-    ) => {
+    clearCookies: () => {
       Cookies.remove('isLoggedIn');
       Cookies.remove('picture');
       Cookies.remove('email');

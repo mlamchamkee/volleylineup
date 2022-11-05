@@ -21,5 +21,15 @@
     "plugins": [
         "react",
         "@typescript-eslint"
-    ]
+    ],
+    "rules": {
+        "no-console": ["error", { 
+            "allow": ["warn", "error", "log"] 
+        }],
+        "no-param-reassign": ["error", {
+            "props": true,
+            "ignorePropertyModificationsFor": ["state"]
+        }]
+    }
+
 }
