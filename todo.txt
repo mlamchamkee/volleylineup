@@ -2,5 +2,6 @@
 [x] OAuth
 [x] API routes for saving rotations
 [x] API routes for getting rotations
+[ ] fix styling
 [ ] light mode dark mode
 [ ] remove serialized error

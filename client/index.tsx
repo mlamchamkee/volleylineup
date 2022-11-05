@@ -3,15 +3,17 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { store } from './redux/store';
+
+import { MAIN_THEME } from '../utils/constants';
 import AppNavbar from './components/AppNavbar';
 import StyledFab from './components/StyledFab';
-import NumberPlayers from './containers/NumberPlayers';
 import Court from './containers/Court';
-import Roster from './containers/Roster';
-import { MAIN_THEME } from '../utils/constants';
-import Login from './containers/Login';
+import Footer from './containers/Footer';
 import IconButton from './containers/IconButton';
+import Login from './containers/Login';
+import NumberPlayers from './containers/NumberPlayers';
+import Roster from './containers/Roster';
+import { store } from './redux/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 
@@ -44,6 +46,7 @@ root.render(
       <Roster />
       <IconButton />
       <Court />
+      <Footer />
       <StyledFab />
       <Login />
     </Provider>
