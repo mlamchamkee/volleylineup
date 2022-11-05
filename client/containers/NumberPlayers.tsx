@@ -11,14 +11,13 @@ import { useAppDispatch, useAppSelector } from '../redux/store';
 
 export default function NumberPlayers() {
   const { playerCount } = useAppSelector((state) => state.app);
+  const marks = [6, 7, 8, 9, 10].map((el) => ({ value: el, label: String(el) }));
   const dispatch = useAppDispatch();
 
   const handleSliderChange = async (event: Event, newValue: number) => {
     dispatch(getLineup(newValue));
     dispatch(setPlayerCount(newValue));
   };
-
-  const marks = [6, 7, 8, 9, 10].map((el) => ({ value: el, label: String(el) }));
 
   function valuetext(value: number) {
     return `${value}`;

@@ -16,8 +16,6 @@ function Login() {
   const dispatch = useAppDispatch();
   const handleClose = () => dispatch(toggleLogin());
 
-  // const handleClickGoogle = () => dispatch(toggleLogin());
-
   return (
     <div>
       <Dialog
@@ -38,7 +36,6 @@ function Login() {
             <Button
               variant="outlined"
               href="/auth/google"
-              // onClick={handleClick}
               sx={{ justifyContent: 'center', alignItems: 'center' }}
             >
               <Box>
