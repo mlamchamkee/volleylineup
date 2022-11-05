@@ -10,8 +10,9 @@ const CLIENT_SECRET = process.env.CLIENT_SECRET_FACEBOOK || '';
 const settings: StrategyOptionWithRequest = {
   clientID: CLIENT_ID,
   clientSecret: CLIENT_SECRET,
-  callbackURL: `${process.env.ROOT_URL}/auth/oauth2/redirect/facebook`,
+  callbackURL: `${process.env.ROOT_URL}/auth/facebook/callback`,
   passReqToCallback: true,
+  profileFields: ['email', 'picture'],
 };
 
 type DoneType = (err: Error | null, user: Express.User) => void;

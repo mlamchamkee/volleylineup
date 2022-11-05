@@ -19,7 +19,6 @@ router.get(
 router.get(
   '/google/callback',
   googlePassport.authenticate('google', {
-    // successRedirect: '../../',
     failureRedirect: '/failure',
   }),
   userController.getUserId,
@@ -40,17 +39,15 @@ router.get(
 router.get(
   '/facebook/callback',
   facebookPassport.authenticate('facebook', {
-    // successRedirect: '../../',
     failureRedirect: '/failure',
   }),
   userController.getUserId,
   userController.addUser,
   (req: any, res: Response): void => {
-    console.log(req.user),
-    res.cookie('email', req.user.email);
-    res.cookie('picture', req.user.picture);
+    res.cookie('email', req.user._json.email);
+    res.cookie('picture', req.user._json.picture.data.url);
     res.cookie('isLoggedIn', true);
-    return res.redirect('../../');
+    return res.redirect('../../../');
   },
 );
 
