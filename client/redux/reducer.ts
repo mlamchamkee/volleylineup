@@ -68,15 +68,18 @@ const appSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(postLineup.fulfilled, (state: AppStateType) => {
-      console.log('Lineup Saved');
       state.showSaveDialog = true;
+    });
+    builder.addCase(getLineup.fulfilled, (state: AppStateType, action: any) => {
+      if (action.payload.length) state.lineup = action.payload;
+      // state.currentLineup = state.lineup.filter((el) => el.num < state.playerCount + 1);
     });
   },
 });
 
 const thunks = {
   postLineup: createAsyncThunk(
-    'app/saveLineup',
+    'app/postLineup',
     async (payload: PostLineupPayload) => {
       let response;
       try {
@@ -85,8 +88,24 @@ const thunks = {
           { playerCount: payload.playerCount, lineup: JSON.stringify(payload.lineup) },
         );
       } catch (error) {
-        console.log('app/saveLineup', error);
+        console.log('app/postLineup', error);
       }
+      return response;
+    },
+  ),
+  getLineup: createAsyncThunk(
+    'app/getLineup',
+    async (playerCount: number) => {
+      let response;
+      try {
+        response = await axios.get(
+          `/api/lineup/${playerCount}`,
+        );
+      } catch (error) {
+        console.log('app/getLineup', error);
+      }
+      // console.log(response?.data);
+      if (response?.data.lineup) response = JSON.parse(response?.data.lineup);
       return response;
     },
   ),
@@ -101,6 +120,6 @@ export const {
   syncCookies,
 } = appSlice.actions;
 
-export const { postLineup } = thunks;
+export const { postLineup, getLineup } = thunks;
 
 export default appSlice.reducer;

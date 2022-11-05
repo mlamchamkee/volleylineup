@@ -12,33 +12,33 @@ import Box from '@mui/material/Box';
 import GroupsIcon from '@mui/icons-material/Groups';
 
 import { useAppDispatch, useAppSelector } from '../redux/store';
-import { setPlayerCount } from '../redux/reducer';
+import { setPlayerCount, getLineup } from '../redux/reducer';
 
-export function NumberPlayers0() {
-  const { playerCount } = useAppSelector((state) => state.app);
-  const dispatch = useAppDispatch();
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target);
-    dispatch(setPlayerCount(event.target.value));
-  };
+// export function NumberPlayers0() {
+//   const { playerCount } = useAppSelector((state) => state.app);
+//   const dispatch = useAppDispatch();
+//   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+//     console.log(event.target);
+//     dispatch(setPlayerCount(event.target.value));
+//   };
 
-  return (
-    <FormControl sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
-      <FormLabel id="demo-row-radio-buttons-group-label">Number of Players</FormLabel>
-      <RadioGroup
-        row
-        aria-labelledby="demo-row-radio-buttons-group-label"
-        name="row-radio-buttons-group"
-        value={playerCount}
-        onChange={handleChange}
-      >
-        <FormControlLabel value="6" control={<Radio />} label="6" />
-        <FormControlLabel value="7" control={<Radio />} label="7" />
-        <FormControlLabel value="8" control={<Radio />} label="8" />
-      </RadioGroup>
-    </FormControl>
-  );
-}
+//   return (
+//     <FormControl sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
+//       <FormLabel id="demo-row-radio-buttons-group-label">Number of Players</FormLabel>
+//       <RadioGroup
+//         row
+//         aria-labelledby="demo-row-radio-buttons-group-label"
+//         name="row-radio-buttons-group"
+//         value={playerCount}
+//         onChange={handleChange}
+//       >
+//         <FormControlLabel value="6" control={<Radio />} label="6" />
+//         <FormControlLabel value="7" control={<Radio />} label="7" />
+//         <FormControlLabel value="8" control={<Radio />} label="8" />
+//       </RadioGroup>
+//     </FormControl>
+//   );
+// }
 
 export default function NumberPlayers() {
   const { playerCount } = useAppSelector((state) => state.app);
@@ -48,13 +48,14 @@ export default function NumberPlayers() {
   //   30,
   // );
 
-  const handleSliderChange = (event: Event, newValue: number | number[]) => {
+  const handleSliderChange = async (event: Event, newValue: number) => {
     // setValue(newValue);
+    dispatch(getLineup(newValue));
     dispatch(setPlayerCount(newValue));
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target);
+    // console.log(event.target);
     dispatch(setPlayerCount(event.target.value));
   };
 

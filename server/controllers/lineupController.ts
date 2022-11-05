@@ -3,9 +3,9 @@ import { NextFunction, Request, Response } from 'express';
 import db from '../models/sqlModel';
 
 export default {
-  getLineups: async (req: any, res: Response, next: NextFunction) => {
+  getLineup: async (req: any, res: Response, next: NextFunction) => {
     const { userId } = res.locals;
-    const { playerCount } = req.body;
+    const { playerCount } = req.params;
 
     const queryString = `
     SELECT * FROM public.lineup
@@ -15,7 +15,7 @@ export default {
 
     try {
       const result = await db.query(queryString, params);
-      res.locals.lineup = result.rows;
+      res.locals.lineup = result.rows[0];
       return next();
     } catch (err) {
       return next({

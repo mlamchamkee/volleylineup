@@ -12,9 +12,9 @@ const router: Router = express.Router();
 
 // Route to get lineups for a user
 router.get(
-  '/',
-  // userController.getUserId,
-  lineupController.getLineups,
+  '/:playerCount',
+  userController.getUserId,
+  lineupController.getLineup,
   (req, res) => res.status(200).json(res.locals.lineup),
 );
 
