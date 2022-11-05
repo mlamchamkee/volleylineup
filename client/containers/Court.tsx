@@ -3,9 +3,9 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Grid2 from '@mui/material/Unstable_Grid2';
 
-import Player from '../components/Player';
-import { useAppDispatch, useAppSelector } from '../redux/store';
 import { MAIN_THEME } from '../../utils/constants';
+import Player from '../components/Player';
+import { useAppSelector } from '../redux/store';
 
 type OrderType = {
   6: Array<number>,
@@ -32,7 +32,7 @@ function Court() {
     10: [0, 1, 5, 6],
   };
 
-  const gridItems:Array<HTMLElement> = order[playerCount].map((num) => {
+  const gridItems:Array<JSX.Element> = order[playerCount].map((num) => {
     const player = currentLineup[num];
     if (player) {
       let backgroundColor = MAIN_THEME.fontColor;

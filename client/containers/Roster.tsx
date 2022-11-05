@@ -6,8 +6,8 @@ import {
 } from '@mui/x-data-grid/';
 
 import { MAIN_THEME } from '../../utils/constants';
-import { useAppDispatch, useAppSelector } from '../redux/store';
 import { updateLineup } from '../redux/reducer';
+import { useAppDispatch, useAppSelector } from '../redux/store';
 
 const columns: GridColDef[] = [
   {
@@ -71,7 +71,6 @@ function Roster() {
   const height = 378 + (playerCount - 8) * 40;
 
   return (
-  // <div style={{ height: 600, maxWidth: 500, margin: 'auto' }}>
     <Box sx={{
       height,
       maxWidth: 352,
@@ -94,12 +93,10 @@ function Roster() {
         onProcessRowUpdateError={handleProcessRowUpdateError}
         experimentalFeatures={{ newEditingApi: true }}
         hideFooter
-          // hideFooterRowCount={true}
         hideFooterSelectedRowCount
         hideFooterPagination
       />
     </Box>
-  // </div>
   );
 }
 
