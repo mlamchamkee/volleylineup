@@ -19,7 +19,13 @@ type DoneType = (err: Error | null, user: Express.User) => void;
 passport.use(
   new GoogleStrategy(
     googleSettings,
-    ((request: Request, accessToken: string, refreshToken: string, profile: any, done: DoneType) => done(null, profile)
+    ((
+      request: Request,
+      accessToken: string,
+      refreshToken: string,
+      profile: any,
+      done: DoneType,
+    ) => done(null, profile)
     ),
   ),
 );
