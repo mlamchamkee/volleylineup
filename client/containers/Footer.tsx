@@ -9,7 +9,7 @@ function Footer() {
     <Box
       id="footer"
       sx={{
-        py: 0,
+        pb: 1,
         px: 2,
       }}
     >
