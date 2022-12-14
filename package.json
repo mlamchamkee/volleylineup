@@ -51,7 +51,7 @@
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
     "babel-jest": "^29.0.3",
-    "babel-loader": "^8.2.5",
+    "babel-loader": "^8.3.0",
     "babel-plugin-import": "^1.13.5",
     "css-loader": "^6.7.1",
     "eslint": "^8.25.0",
@@ -75,7 +75,7 @@
     "supertest": "^6.2.3",
     "ts-loader": "^9.4.1",
     "typescript": "^4.8.4",
-    "webpack": "^5.74.0",
+    "webpack": "^5.75.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.11.1"
   },
