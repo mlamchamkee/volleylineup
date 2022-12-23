@@ -23,7 +23,7 @@ router.post(
   '/',
   userController.getUserId,
   lineupController.postLineup,
-  (req, res) => res.status(200).json(res.locals.lineup),
+  (req, res) => res.status(201).json(res.locals.lineup),
 );
 
 // Route to delete lineup for a user

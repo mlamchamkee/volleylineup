@@ -1,0 +1,7 @@
+{
+  "name": "getLineup",
+  "description": "",
+  "dependencies": {
+    "pg": "^8.8.0"
+  }
+}
