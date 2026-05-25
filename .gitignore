@@ -108,3 +108,5 @@ dist
 **.zip
 
 **/lambda/*/package-lock*
+
+/aws/lambda/gotham/todo.txt
